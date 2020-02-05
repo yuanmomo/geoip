@@ -102,7 +102,8 @@ func main() {
 			Cidr:        cidr,
 		})
 	}
-	geoIPList.Entry = append(geoIPList.Entry, getLocalIPs())
+
+	appendByIpKindMap(geoIPList.Entry)
 
 	geoIPBytes, err := proto.Marshal(geoIPList)
 	if err != nil {
@@ -114,8 +115,8 @@ func main() {
 	}
 }
 
-var (
-	localIPs = []string{
+var ipKindMap = map[string][]string{
+	"PRIVATE": {
 		"0.0.0.0/8",
 		"10.0.0.0/8",
 		"100.64.0.0/10",
@@ -135,18 +136,48 @@ var (
 		"::1/128",
 		"fc00::/7",
 		"fe80::/10",
-	}
-)
+	},
+	"DIRECT": {
+		// DNS_SERVER_DIRECT_RULE
+		"223.5.5.5",
+		"223.6.6.6",
+		"114.114.114.114",
+		"114.114.115.115",
+		"119.29.29.29",
+	},
+	"PROXY": {
+		// VPS_IP_DIRECT_RULE
+		// aliyun sz
+		"112.74.16.233",
+		// bwg yuanmomo
+		"104.224.172.179",
+		// hostmem
+		"154.81.3.175",
+		// buyvm
+		"209.141.59.78",
+		// hk-aliyun
+		"47.89.52.95",
+		// kvm-virmarch
+		"107.175.24.169",
+		// racknerd
+		"173.82.232.131",
+		// cloudcone
+		"173.82.52.79",
+	},
+}
 
-func getLocalIPs() *router.GeoIP {
-	cidr := make([]*router.CIDR, 0, 16)
-	for _, ip := range localIPs {
-		c, err := conf.ParseIP(ip)
-		common.Must(err)
-		cidr = append(cidr, c)
-	}
-	return &router.GeoIP{
-		CountryCode: "PRIVATE",
-		Cidr:        cidr,
+func appendByIpKindMap(geoIPList []*router.GeoIP) {
+	for k, v := range ipKindMap {
+		cidr := make([]*router.CIDR, 0, 16)
+		for _, ip := range v {
+			c, err := conf.ParseIP(ip)
+			common.Must(err)
+			cidr = append(cidr, c)
+		}
+		geoIP := &router.GeoIP{
+			CountryCode: k,
+			Cidr:        cidr,
+		}
+		geoIPList = append(geoIPList, geoIP)
 	}
 }

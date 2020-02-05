@@ -8,7 +8,7 @@ rm GeoLite2-Country-CSV.zip
 mv GeoLite2* geoip
 ls ./geoip
 
-go get -u github.com/v2ray/geoip
+go get -u github.com/yuanmomo/geoip
 $GOPATH/bin/geoip --country=./geoip/GeoLite2-Country-Locations-en.csv --ipv4=./geoip/GeoLite2-Country-Blocks-IPv4.csv --ipv6=./geoip/GeoLite2-Country-Blocks-IPv6.csv
 
 mkdir ./publish
