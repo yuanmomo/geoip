@@ -103,8 +103,7 @@ func main() {
 		})
 	}
 
-	appendByIpKindMap(geoIPList.Entry)
-
+	geoIPList.Entry = appendByIpKindMap(geoIPList.Entry)
 	geoIPBytes, err := proto.Marshal(geoIPList)
 	if err != nil {
 		fmt.Println("Error marshalling geoip list:", err)
@@ -171,7 +170,7 @@ var ipKindMap = map[string][]string{
 	},
 }
 
-func appendByIpKindMap(geoIPList []*router.GeoIP) {
+func appendByIpKindMap(geoIPList []*router.GeoIP) []*router.GeoIP{
 	for k, v := range ipKindMap {
 		cidr := make([]*router.CIDR, 0, 16)
 		for _, ip := range v {
@@ -185,4 +184,5 @@ func appendByIpKindMap(geoIPList []*router.GeoIP) {
 		}
 		geoIPList = append(geoIPList, geoIP)
 	}
+	return  geoIPList
 }
