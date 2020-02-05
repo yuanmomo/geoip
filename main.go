@@ -163,6 +163,11 @@ var ipKindMap = map[string][]string{
 		"173.82.232.131",
 		// cloudcone
 		"173.82.52.79",
+
+		// DNS server
+		"8.8.8.8",
+		"8.8.4.4",
+		"1.1.1.1",
 	},
 }
 
