@@ -25,7 +25,7 @@ echo "exec ip command..... "
 cd ${root_dir}
 ${current_dir}/ip --country=./geoip/GeoLite2-Country-Locations-en.csv --ipv4=./geoip/GeoLite2-Country-Blocks-IPv4.csv --ipv6=./geoip/GeoLite2-Country-Blocks-IPv6.csv
 
-echo "move geoip.dat to v2ray bin dir....."
+echo "move geoip.dat to publish dir....."
 chmod -x "${root_dir}"/geoip.dat
 mv "${root_dir}"/geoip.dat ${root_dir}/publish/geoip.dat
 
