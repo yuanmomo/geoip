@@ -14,12 +14,12 @@ mv -f GeoLite2* geoip
 ls ./geoip
 
 #go get -u github.com/yuanmomo/geoip/...
-if [[ ! $(command -v ${current_dir}/ip) ]] ; then
+#if [[ ! $(command -v ${current_dir}/ip) ]] ; then
   echo "go build ip command..... "
   export GO111MODULE=on
   cd ${root_dir}
   go build -o ${current_dir}/ip main.go
-fi
+#fi
 
 echo "exec ip command..... "
 cd ${root_dir}
