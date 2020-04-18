@@ -12,12 +12,6 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: add-whois
-        run: |
-           apt-get update && apt-get -y install whois
-        shell: bash
-
-
       - name: Set up Go 1.13
         uses: actions/setup-go@v1
         with:
