@@ -11,7 +11,7 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"geoip/list"
+	"github.com/yuanmomo/geoip/list"
 	"io/ioutil"
 	"os"
 	"path/filepath"
