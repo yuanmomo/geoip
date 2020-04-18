@@ -169,7 +169,7 @@ func loadFromFile(){
 func loadFromOnline(){
 	cidrMap := list.GetAll()
 	for k, v := range cidrMap {
-		ipKindMap[k] = v
+		ipKindMap[strings.ToUpper(k)] = v
 	}
 
 }
