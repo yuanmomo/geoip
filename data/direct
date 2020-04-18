@@ -1,0 +1,24 @@
+###### VPS_IP_DIRECT_RULE
+## aliyun sz
+112.74.16.233
+## bwg yuanmomo
+104.224.172.179
+## hostmem
+154.81.3.175
+## buyvm
+209.141.59.78
+## hk-aliyun
+47.89.52.95
+## kvm-virmarch
+107.175.24.169
+## racknerd
+173.82.232.131
+## cloudcone
+173.82.52.79
+
+## DNS_SERVER_DIRECT_RULE
+223.5.5.5
+223.6.6.6
+114.114.114.114
+114.114.115.115
+119.29.29.29
