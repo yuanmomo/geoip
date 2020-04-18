@@ -3,7 +3,7 @@ package list
 // Package is called aw
 import (
 	"fmt"
-	"geoip/util"
+	"github.com/yuanmomo/geoip/util"
 	"os/exec"
 	"strings"
 )

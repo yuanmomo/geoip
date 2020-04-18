@@ -1,7 +1,7 @@
 package list
 
 import (
-	"geoip/util"
+	"github.com/yuanmomo/geoip/util"
 )
 type Amazon struct{}
 

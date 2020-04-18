@@ -1,4 +1,4 @@
-module geoip
+module github.com/yuanmomo/geoip
 
 go 1.13
 
