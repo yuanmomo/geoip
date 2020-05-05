@@ -33,8 +33,21 @@ func GetType(name string) FetchType {
 	return cmd
 }
 
-func Merge(fetchType FetchType, cidrArray []string) []string {
-	//res, err := MergeCIDRs(strings.Split(ipList, "\n"))
+func Merge(fetchType FetchType, originCidrArray []string) []string {
+	var cidrArray []string;
+
+	for _, cidr := range originCidrArray {
+		// trim space
+		cidr = strings.TrimSpace(cidr);
+
+		// filter ipv6
+		if strings.Index(cidr,":") >= 0{
+			continue
+		}
+
+		cidrArray = append(cidrArray,cidr)
+	}
+
 	res, err := cidr.MergeCIDRs(cidrArray)
 	if err != nil {
 		fmt.Printf("[%s] merge error : %s\n", fetchType.Name(), err.Error())
